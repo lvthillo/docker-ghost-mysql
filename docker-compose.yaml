@@ -1,0 +1,38 @@
+version: '2'
+volumes:
+  mysql-volume:
+    
+services:
+ mysql:  
+  image: mysql:5.7.12
+  container_name: mysql
+  volumes:
+      - mysql-volume:/var/lib/mysql
+  #ports:
+  # - "3306"
+  environment:
+   - MYSQL_ROOT_PASSWORD=root
+   - MYSQL_DATABASE=db
+   - MYSQL_USER=blog-user
+   - MYSQL_PASSWORD=supersecret
+
+ ghost:  
+  build: ./ghost
+  image: ghost:1.0.0
+  container_name: ghost
+  depends_on:
+    - mysql
+  ports:
+    - "127.0.0.1:2368:2368"
+  entrypoint: ["./wait-for-it.sh", "mysql", "--", "/entrypoint.sh"]
+  command: ["npm", "start"]
+
+ nginx:
+  build: ./nginx
+  image: nginx:1.0.0
+  container_name: nginx-proxy
+  depends_on: 
+    - ghost
+  ports: 
+    - "80:80"
+    - "443:443"
