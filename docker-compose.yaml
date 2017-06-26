@@ -27,6 +27,17 @@ services:
   build: ./nginx
   image: nginx:1.0.0
   container_name: nginx-proxy
+  command: >
+      /bin/sh -c
+      "envsubst '
+      \$$SERVERNAME
+      '< /tmp/default.conf.temp
+      > /etc/nginx/conf.d/default.conf
+      && nginx -g 'daemon off;'"
+  volumes:
+   - ./nginx/config/default.conf.temp:/tmp/default.conf.temp
+  environment:
+   - SERVERNAME=192.168.140.224
   depends_on: 
     - ghost
   ports: 
