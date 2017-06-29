@@ -37,7 +37,7 @@ services:
   volumes:
    - ./nginx/config/default.conf.temp:/tmp/default.conf.temp
   environment:
-   - SERVERNAME=192.168.140.224
+   - SERVERNAME=${SERVERNAME}
   depends_on: 
     - ghost
   ports: 
