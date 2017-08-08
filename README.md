@@ -6,4 +6,4 @@ $ echo "SERVERNAME=example.com" > .env
 $ docker-compose up --build -d
 ```
 
-Visit https://example.com (default SERVERNAME=localhost)
+Visit http://example.com (default SERVERNAME=localhost)
