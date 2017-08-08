@@ -4,7 +4,7 @@ volumes:
     
 services:
  mysql:  
-  image: mysql:5.7.12
+  image: mysql:8.0
   container_name: mysql
   volumes:
       - mysql-volume:/var/lib/mysql
@@ -20,8 +20,8 @@ services:
   container_name: ghost
   depends_on:
     - mysql
-  entrypoint: ["./wait-for-it.sh", "mysql", "--", "/entrypoint.sh"]
-  command: ["npm", "start"]
+  entrypoint: ["wait-for-it.sh", "mysql", "--", "docker-entrypoint.sh"]
+  command: ["node", "current/index.js"]
 
  nginx:
   build: ./nginx
