@@ -1,4 +1,4 @@
-# Nginx & Ghost & MySQL with Docker Compose
+# Deprecated: Nginx & Ghost & MySQL with Docker Compose
 ```
 $ git clone https://github.com/lvthillo/docker-ghost.git
 $ cd docker-ghost
