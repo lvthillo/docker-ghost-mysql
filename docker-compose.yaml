@@ -1,45 +1,32 @@
-version: '2'
+version: '3.1'
 volumes:
   mysql-volume:
     
 services:
  mysql:  
-  image: mysql:8.0
+  image: mysql:5.7
   container_name: mysql
   volumes:
-      - mysql-volume:/var/lib/mysql
+    - mysql-volume:/var/lib/mysql
   environment:
-   - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=db
-   - MYSQL_USER=blog-user
-   - MYSQL_PASSWORD=supersecret
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: db
+    MYSQL_USER: blog-user
+    MYSQL_PASSWORD: supersecret
 
  ghost:  
   build: ./ghost
-  image: ghost:1.0.0
+  image: lvthillo/ghost:1.20.0
   container_name: ghost
+  restart: always
+  ports:
+    - 80:2368 
+  environment:
+    database__client: mysql
+    database__connection__host: mysql
+    database__connection__user: blog-user
+    database__connection__password: supersecret
+    database__connection__database: db
   depends_on:
     - mysql
   entrypoint: ["wait-for-it.sh", "mysql", "--", "docker-entrypoint.sh"]
-  command: ["node", "current/index.js"]
-
- nginx:
-  build: ./nginx
-  image: nginx:1.0.0
-  container_name: nginx-proxy
-  command: >
-      /bin/sh -c
-      "envsubst '
-      \$$SERVERNAME
-      '< /tmp/default.conf.temp
-      > /etc/nginx/conf.d/default.conf
-      && nginx -g 'daemon off;'"
-  volumes:
-   - ./nginx/config/default.conf.temp:/tmp/default.conf.temp
-  environment:
-   - SERVERNAME=${SERVERNAME}
-  depends_on: 
-    - ghost
-  ports: 
-    - "80:80"
-    - "443:443"
