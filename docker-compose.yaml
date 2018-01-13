@@ -30,3 +30,4 @@ services:
   depends_on:
     - mysql
   entrypoint: ["wait-for-it.sh", "mysql", "--", "docker-entrypoint.sh"]
+  command: ["node", "current/index.js"]
