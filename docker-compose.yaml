@@ -20,7 +20,7 @@ services:
   image: lvthillo/ghost:1.20.0
   container_name: ghost
   volumes:
-    - ghost-volume:/var/lib/ghost
+    - ghost-volume:/var/lib/ghost/content
   restart: always
   ports:
     - 80:2368 
