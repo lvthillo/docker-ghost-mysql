@@ -9,6 +9,8 @@ $ cd docker-ghost-mysql
 $ docker-compose up --build -d
 ```
 
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/lvthillo/docker-ghost-mysql/master/docker-compose.yaml)
+
 Visit http://localhost or http://localhost/admin
 
 <img width="1438" alt="screen shot 2018-01-13 at 16 19 37" src="https://user-images.githubusercontent.com/14105387/34907357-a7979968-f87d-11e7-8423-c8734cbc6fdd.png">
