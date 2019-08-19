@@ -9,7 +9,7 @@ $ cd docker-ghost-mysql
 $ docker-compose up --build -d
 ```
 
-Visit http://localhost or http://localhost/admin
+Visit http://localhost:2368 or http://localhost:2368/admin
 
 <img width="1438" alt="screen shot 2018-01-13 at 16 19 37" src="https://user-images.githubusercontent.com/14105387/34907357-a7979968-f87d-11e7-8423-c8734cbc6fdd.png">
 
@@ -21,7 +21,7 @@ Verify if the user exists in MySQL
 ```
 $ docker ps
 CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                  NAMES
-55e5ccda1a7f        lvthillo/ghost:1.20.0   "wait-for-it.sh mysq…"   3 minutes ago       Up 3 minutes        0.0.0.0:80->2368/tcp   ghost
+55e5ccda1a7f        lvthillo/ghost:1.20.0   "wait-for-it.sh mysq…"   3 minutes ago       Up 3 minutes        0.0.0.0:2368->2368/tcp   ghost
 1e51addc77b6        mysql:5.7               "docker-entrypoint.s…"   9 minutes ago       Up 9 minutes        3306/tcp               mysql
 
 $ docker exec -it mysql bash

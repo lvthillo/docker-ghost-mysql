@@ -17,13 +17,13 @@ services:
 
  ghost:  
   build: ./ghost
-  image: lvthillo/ghost:1.20.0
+  image: lvthillo/ghost:2.28.0
   container_name: ghost
   volumes:
     - ghost-volume:/var/lib/ghost/content
   restart: always
   ports:
-    - 80:2368 
+    - 2368:2368 
   environment:
     database__client: mysql
     database__connection__host: mysql
