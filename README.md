@@ -9,7 +9,7 @@ $ cd docker-ghost-mysql
 $ docker-compose up --build -d
 ```
 
-Visit http://localhost:2368 or http://localhost:2368/admin
+Visit http://localhost:2368 or http://localhost:2368/ghost
 
 <img width="1438" alt="screen shot 2018-01-13 at 16 19 37" src="https://user-images.githubusercontent.com/14105387/34907357-a7979968-f87d-11e7-8423-c8734cbc6fdd.png">
 

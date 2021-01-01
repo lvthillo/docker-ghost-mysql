@@ -17,7 +17,7 @@ services:
 
  ghost:  
   build: ./ghost
-  image: lvthillo/ghost:2.28.0
+  image: lvthillo/ghost:3.40.2
   container_name: ghost
   volumes:
     - ghost-volume:/var/lib/ghost/content
